@@ -1,6 +1,7 @@
 import React from "react"
 import Header from "./Header"
 import Users from "./Users"
+import AddUser from "./AddUser"
 
 class Les7 extends React.Component {
 
@@ -11,7 +12,9 @@ class Les7 extends React.Component {
                             <div className="main_form">
                                 <Users />
                             </div> 
-                            <aside></aside>
+                            <aside>
+                                   <AddUser />
+                            </aside>
                      </div>)   
        }   
 }
