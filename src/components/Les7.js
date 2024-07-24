@@ -27,6 +27,8 @@ class Les7 extends React.Component {
                   ]
               }
               this.addUser = this.addUser.bind(this)
+              this.deleteUser = this.deleteUser.bind(this)
+              this.editUser = this.editUser.bind(this)
       
           }
        render() {
@@ -34,7 +36,7 @@ class Les7 extends React.Component {
                      <div>
                             <Header my_text='Список пользователей' />    
                             <div className="main_form">
-                                <Users users={this.state.users}/>
+                                <Users users={this.state.users} onEdit={this.editUser} onDelete={this.deleteUser} />
                             </div> 
                             <aside>
                                    <AddUser onAdd={this.addUser} />
@@ -46,6 +48,21 @@ class Les7 extends React.Component {
               const id = this.state.users.length + 1
               this.setState({
                      users: [...this.state.users, {id, ...user}]
+              })
+       }
+
+       editUser(user) {
+              let allUsers = this.state.users
+              allUsers[user.id - 1] = user
+
+              this.setState({users: []}, () => {
+                     this.setState({users: [...allUsers]})
+              })
+       }
+
+       deleteUser(id) {
+              this.setState({
+                     users: this.state.users.filter((user) => user.id !== id)
               })
        }
 }
