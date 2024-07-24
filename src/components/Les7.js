@@ -2,28 +2,34 @@ import React from "react"
 import Header from "./Header"
 import Users from "./Users"
 import AddUser from "./AddUser"
+import axios from "axios"
 
+const baseurl = "https://reqres.in/api/users?page=2"
 class Les7 extends React.Component {
        constructor(props) {
               super(props)
+              axios.get(baseurl).then((res) => {
+                     this.setState({users: res.data.data })
+              })
+
               this.state = {
-                  users: [
-                      {
-                          "id": 1,
-                          "first_name": "Bob", 
-                          "last_name": "Marley", 
-                          "patronymic": "mc",
-                          "age": 25,
-                          "isHappy": true
-                      },
-                      {
-                          "id": 2,
-                          "first_name": "Jack", 
-                          "last_name": "Richer", 
-                          "patronymic": "vc",
-                          "age": 40,
-                          "isHappy": false
-                      }
+                   users: [
+              //         {
+              //             "id": 1,
+              //             "first_name": "Bob", 
+              //             "last_name": "Marley", 
+              //             "patronymic": "mc",
+              //             "age": 25,
+              //             "isHappy": true
+              //         },
+              //         {
+              //             "id": 2,
+              //             "first_name": "Jack", 
+              //             "last_name": "Richer", 
+              //             "patronymic": "vc",
+              //             "age": 40,
+              //             "isHappy": false
+              //         }
                   ]
               }
               this.addUser = this.addUser.bind(this)
